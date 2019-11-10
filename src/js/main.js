@@ -74,20 +74,52 @@ class SliderCarousel {
     prevSlider(){
         if( this.options.infinity || this.options.position > 0) {
             --this.options.position;
+            console.log(this.options.position)
             if(this.options.position < 0){
+                console.log(this.options.maxPosition)
                 this.options.position = this.options.maxPosition;
             }
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}% `
         }
     }
     nextSlider(){
-        if(this.options.infinity || this.options.position < this.options.maxPosition) {
-            ++this.options.position;
-            if(this.options.position > this.options.maxPosition){
-                this.options.position = 0;  
+        if(this.slidesToShow == 4){
+            if( this.options.infinity || this.options.position < this.options.maxPosition) {
+                ++this.options.position;
+                if(this.options.position > this.options.maxPosition){
+                    this.options.position = 0;  
+                }
+                this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%`
             }
-            this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%`
         }
+        else if(this.slidesToShow == 3){
+            if( this.options.infinity || this.options.position < this.options.maxPosition + 1) {
+                ++this.options.position;
+                if(this.options.position > this.options.maxPosition + 1){
+                    this.options.position = 0;  
+                }
+                this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%`
+            }
+        }
+        else if(this.slidesToShow == 2){
+            if( this.options.infinity || this.options.position < this.options.maxPosition + 2) {
+                ++this.options.position;
+                if(this.options.position > this.options.maxPosition + 2){
+                    this.options.position = 0;  
+                }
+                this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%`
+            }
+        }
+        else if(this.slidesToShow == 1){
+            if( this.options.infinity || this.options.position < this.options.maxPosition + 3) {
+                ++this.options.position;
+                if(this.options.position > this.options.maxPosition + 3){
+                    this.options.position = 0;  
+                }
+                this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%`
+            }
+        }
+        
     }
     addArrow(){
         this.prev = document.createElement('button')
@@ -132,17 +164,17 @@ class SliderCarousel {
         const slidesToShowDefault = this.slidesToShow;
         const allRespone = this.responsive.map( item => item.breakpoint)
         const maxResponse = Math.max(...allRespone)
-
+        
         const checkResponse = () => {
             const widthWindow = document.documentElement.clientWidth;
             if(widthWindow < maxResponse) {
                 for(let i = 0; i < allRespone.length; i++) {
                     if(widthWindow < allRespone[i]){
                     this.slidesToShow = this.responsive[i].slidesToShow;
+                    console.log(this.responsive[i].slidesToShow)
                     this.options.widthSlide = Math.floor(100 / this.slidesToShow)
                     this.addStyles()
-                    }
-                    
+                    }     
                 }
             }
             else {
