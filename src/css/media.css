@@ -104,11 +104,8 @@
     #btn{
         display: block;
     }
-    .hero__description{
-        height: 100px;
-        overflow: hidden;
-        transition: all 2s;
-        
+    span.hero__premier {
+        margin-top: 10px;
     }
   
 }

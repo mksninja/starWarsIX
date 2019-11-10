@@ -159,17 +159,16 @@ class SliderCarousel {
     const btn = document.querySelector('#btn')
     const dots = document.querySelector('#dots')
     const more = document.querySelector('#more')
-    const p = document.querySelector('.hero__description')
     btn.addEventListener('click',()=>{
         if(dots.style.display == 'none'){
             dots.style.display = 'inline'
             btn.innerHTML = 'Подробнее'
-            p.style.height = '100px'
+            more.style.display = 'none'
         }
         else {
             dots.style.display = 'none'
             btn.innerHTML = 'Скрыть'
-            p.style.height = '270px'
+            more.style.display = 'inline'
         }
     })
 })()
