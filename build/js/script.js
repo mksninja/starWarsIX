@@ -74,9 +74,7 @@ class SliderCarousel {
     prevSlider(){
         if( this.options.infinity || this.options.position > 0) {
             --this.options.position;
-            console.log(this.options.position)
             if(this.options.position < 0){
-                console.log(this.options.maxPosition)
                 this.options.position = this.options.maxPosition;
             }
             this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}% `
@@ -171,7 +169,6 @@ class SliderCarousel {
                 for(let i = 0; i < allRespone.length; i++) {
                     if(widthWindow < allRespone[i]){
                     this.slidesToShow = this.responsive[i].slidesToShow;
-                    console.log(this.responsive[i].slidesToShow)
                     this.options.widthSlide = Math.floor(100 / this.slidesToShow)
                     this.addStyles()
                     }     
